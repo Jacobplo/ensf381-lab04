@@ -1,3 +1,5 @@
+var users
+
 let userGrid = document.getElementById("userGrid")
 let viewToggleBtn = document.getElementById("viewToggleBtn")
 let deleteIdInput = document.getElementById("deleteIdInput")
@@ -7,7 +9,10 @@ let sortByIdBtn = document.getElementById("sortByIdBtn")
 
 function render(users) {
   if (users.length == 0) {
-    userGrid.text
+    userGrid.textContent = "No users loaded."
+  }
+  else {
+    userGrid.textContent = ""
   }
 
   for (let user of users) {
@@ -25,7 +30,7 @@ function render(users) {
 
 async function retrieveData() {
   const response = await fetch("https://69a1db862e82ee536fa26290.mockapi.io/users_api")
-  const users = await response.json()
+  users = await response.json()
   console.log(users)
   render(users)
 }
@@ -41,5 +46,23 @@ viewToggleBtn.addEventListener('click', () => {
 })
 
 sortByGroupBtn.addEventListener('click', () => {
-  
+  users.sort((a, b) => {
+    if (a.user_group > b.user_group) return 1
+    if (b.user_group > a.user_group) return -1
+    return 0
+  })
+  render(users)
+})
+
+sortByIdBtn.addEventListener('click', () => {
+  users.sort((a, b) => {
+    if (a.id > b.id) return 1
+    if (b.id > a.id) return -1
+    return 0
+  })
+  render(users)
+})
+
+deleteBtn.addEventListener('click', () => {
+  console.log(deleteIdInput)
 })
