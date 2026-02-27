@@ -1,11 +1,11 @@
 var users
 
-let userGrid = document.getElementById("userGrid")
-let viewToggleBtn = document.getElementById("viewToggleBtn")
-let deleteIdInput = document.getElementById("deleteIdInput")
-let deleteBtn = document.getElementById("deleteBtn")
-let sortByGroupBtn = document.getElementById("sortByGroupBtn")
-let sortByIdBtn = document.getElementById("sortByIdBtn")
+const userGrid = document.getElementById("userGrid")
+const viewToggleBtn = document.getElementById("viewToggleBtn")
+const deleteIdInput = document.getElementById("deleteIdInput")
+const deleteBtn = document.getElementById("deleteBtn")
+const sortByGroupBtn = document.getElementById("sortByGroupBtn")
+const sortByIdBtn = document.getElementById("sortByIdBtn")
 
 function render(users) {
   if (users.length == 0) {
@@ -71,5 +71,4 @@ deleteBtn.addEventListener('click', () => {
     }
   }
   render(users)
-
 })
