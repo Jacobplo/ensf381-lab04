@@ -1,4 +1,3 @@
-
 var users
 
 const userGrid = document.getElementById("userGrid")
@@ -18,13 +17,14 @@ function render(users) {
 
   for (let user of users) {
     let element = document.createElement("article")
-    element.class = "user-card"
+    element.className = "user-card"
     element.innerHTML = `
         <h3>${user.first_name ?? ""}</h3> 
         <p>first_name: ${user.first_name ?? ""}</p> 
         <p>user_group: ${user.user_group ?? ""}</p> 
         <p>id: ${user.id ?? ""}</p> 
     `
+    console.log(element)
     userGrid.appendChild(element)
   }
 }
