@@ -64,5 +64,12 @@ sortByIdBtn.addEventListener('click', () => {
 })
 
 deleteBtn.addEventListener('click', () => {
-  console.log(deleteIdInput)
+  for (let i = 0; i < users.length; i++) {
+    if (users[i].id == deleteIdInput.value) {
+    fetch(`https://69a1db862e82ee536fa26290.mockapi.io/users_api/${users[i].id}`, { method: 'DELETE' })
+      users.splice(i, 1)   
+    }
+  }
+  render(users)
+
 })
