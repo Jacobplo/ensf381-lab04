@@ -24,13 +24,19 @@ function render(users) {
         <p>user_group: ${user.user_group ?? ""}</p> 
         <p>id: ${user.id ?? ""}</p> 
     `
-    console.log(element)
     userGrid.appendChild(element)
   }
 }
 
 async function retrieveData() {
-  const response = await fetch("https://69a1db862e82ee536fa26290.mockapi.io/users_api")
+  try {
+    var response = await fetch("https://69a1db862e82ee536fa26290.mockapi.io/users_api") 
+  }
+  catch (error) {
+    console.log("Error fetching data: ", error)
+    return
+  }
+
   users = await response.json()
   console.log(users)
   render(users)
